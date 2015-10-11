@@ -1,4 +1,5 @@
 import requests
+import re
 
 class openers(object):
     #functions to open websites in raw form of different formats
@@ -60,7 +61,16 @@ class modifiers(object):
         modifiers.delete_section(charlst, first[0], first[1]+1)
 
     def remove_all_brackets(charlst):
-        #removes all brackets in linear fashion, slow for large documents.
+        #removes all brackets from a char list in linear fashion, slow for large documents.
         while '<' in charlst:
             modifiers.remove_first_bracket(charlst)
         return charlst
+
+    def split_from_brackets(string):
+        #removes all bracket tags from a string. Fast, useful for large.
+        splitter = re.split("<[^<>]*>", string)
+        return splitter
+
+class harvestors(object):
+    #Class that contains function to build data structures based off information from the HTML page.
+    pass
