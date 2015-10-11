@@ -25,6 +25,12 @@ class modifiers(object):
                 charlst.remove(elem)
         return charlst
 
+    def delete_tabs(charlst):
+        for elem in charlst:
+            if elem == '\t':
+                charlst.remove(elem)
+        return charlst
+
     def delete_section(charlst, start, end):
         del charlst[start:end]
 
@@ -52,3 +58,9 @@ class modifiers(object):
         #removes the first bracket and the contents of it
         first = modifiers.find_first_bracket(charlst)
         modifiers.delete_section(charlst, first[0], first[1]+1)
+
+    def remove_all_brackets(charlst):
+        #removes all brackets in linear fashion, slow for large documents.
+        while '<' in charlst:
+            modifiers.remove_first_bracket(charlst)
+        return charlst
