@@ -71,6 +71,7 @@ class modifiers(object):
         splitter = re.split("<[^<>]*>", string)
         return splitter
 
+
     def remove_symbols(charlst):
         #removes symbols not considered to be linguistically readable.
         symbols = {'-', '+', '(', ')', '{', '}', '[', ']', '=', '^'}
@@ -80,8 +81,20 @@ class modifiers(object):
         return charlst
 
 class harvestors(object):
+
     #Class that contains function to build data structures based off information from the HTML page.
-    pass
+    def tag_count(string):
+    #counts the occurrences of tags in an HTML string and returns a dictionary of them
+        temp = re.compile(r"<[^<>]+>")
+        tags = temp.findall(string)
+        count_dict = {elem:tags.count(elem) for elem in tags}
+        return count_dict
+
+    def tag_lst(string):
+        #returns a list of <*>___<*> formatted fragments of an HTML String.
+        temp = re.compile(r"<[^<>]+>[^<>]*<[^<>]+>")
+        tags = temp.findall(string)
+        return tags
 
 class filters(object):
     #Class that contains functions to remove snippets of text based on thresholds.
@@ -127,3 +140,35 @@ class filters(object):
             if temp.search(elem):
                 fragments.append(elem)
         return fragments
+
+    def contains_words(words, splitlst):
+        #Used to determine if a segment contains any of the words
+        #does not take into account spaces between words
+        segments = [r"^.*%s.*$" %(phrase) for phrase in words]
+        fragments = []
+        for elem in splitlst:
+            for temp in segments:
+                if re.match(temp, elem):
+                    fragments.append(elem)
+        return fragments
+
+    def contains_words_spaced(words, splitlst):
+        #checks if a word on it's own is present in the splits.
+        segments = [r"^.* %s .*$" %(phrase) for phrase in words]
+        fragments = []
+        for elem in splitlst:
+            for temp in segments:
+                if re.match(temp, elem):
+                    fragments.append(elem)
+        return fragments
+
+
+
+class Element(object):
+
+    def __init__(self, tag, data):
+        self.tag = tag
+        self.data = data
+        self.datalst = self.data.split()
+    def __len__(self):
+        return len(self.data)
