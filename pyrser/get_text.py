@@ -93,3 +93,37 @@ class filters(object):
             if temp.search(elem):
                 fragments.append(elem)
         return fragments
+
+    def only_numbers(splitlst):
+        temp = re.compile(r"^[0-9]+$")
+        fragments = []
+        for elem in splitlst:
+            if temp.match(elem):
+                fragments.append(elem)
+        return fragments
+
+    def no_numbers(splitlst):
+        temp = re.compile(r"^[^0-9]+$")
+        fragments = []
+        for elem in splitlst:
+            if temp.search(elem):
+                fragments.append(elem)
+        return fragments
+
+    def contains_phrase(phrase, splitlst):
+        segment = r"^.*%s.*$" %(phrase)
+        temp = re.compile(segment)
+        fragments = []
+        for elem in splitlst:
+            if temp.match(elem):
+                fragments.append(elem)
+        return fragments
+
+    def no_phrase(phrase, splitlst):
+        segment = r"^[^%s]+$" %(phrase)
+        temp = re.compile(segment)
+        fragments = []
+        for elem in splitlst:
+            if temp.search(elem):
+                fragments.append(elem)
+        return fragments
