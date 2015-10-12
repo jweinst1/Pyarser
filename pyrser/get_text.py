@@ -71,6 +71,25 @@ class modifiers(object):
         splitter = re.split("<[^<>]*>", string)
         return splitter
 
+    def remove_symbols(charlst):
+        #removes symbols not considered to be linguistically readable.
+        symbols = {'-', '+', '(', ')', '{', '}', '[', ']', '=', '^'}
+        for elem in charlst:
+            if elem in symbols:
+                charlst.remove(elem)
+        return charlst
+
 class harvestors(object):
     #Class that contains function to build data structures based off information from the HTML page.
     pass
+
+class filters(object):
+    #Class that contains functions to remove snippets of text based on thresholds.
+    #These functions must be used with split lists, NOT char lists. They filter out entire expressions, not characters
+    def contains_numbers(splitlst):
+        temp = re.compile(r"[0-9]+")
+        fragments = []
+        for elem in splitlst:
+            if temp.search(elem):
+                fragments.append(elem)
+        return fragments
