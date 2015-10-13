@@ -17,7 +17,7 @@ setup(
   author = 'Joshua Weinstein',
   author_email = 'jweinst1@berkeley.edu',
   url = 'https://github.com/jweinst1/Pyarser', # use the URL to the github repo
-  download_url = 'https://github.com/jweinst1/Pyrser/tarball/0.1', # I'll explain this in a second
+  download_url = 'https://github.com/jweinst1/Pyarser/tarball/0.1', # I'll explain this in a second
   keywords = ['data_science, web, data, harvesting'], # arbitrary keywords
   classifiers = [],
 )
