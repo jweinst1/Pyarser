@@ -162,6 +162,17 @@ class filters(object):
                     fragments.append(elem)
         return fragments
 
+    def contains_id(ident, splitlst):
+        #returns HTML element fragment that has a specific ID
+        segment = r"^.*id='%s'.*$" %(ident)
+        temp = re.compile(segment)
+        return [elem for elem in splitlst if temp.match(elem)]
+
+    def contains_value(val, splitlst):
+        #returns HTML element fragment that has a specific value
+        segment = r"^.*value='%s'.*$" %(val)
+        temp = re.compile(segment)
+        return [elem for elem in splitlst if temp.match(elem)]
 
 
 class Element(object):
