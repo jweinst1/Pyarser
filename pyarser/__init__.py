@@ -1,6 +1,6 @@
 #package top level
 import requests
-from pyrser.get_text import *
+from pyarser.get_text import *
 import re
 
 def get_site_HTML(link):

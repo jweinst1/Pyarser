@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
   name = 'Pyarser',
   packages = ['Pyarser'], # this must be the same as the name above
-  version = '0.1.0',
+  version = '0.1.1',
   description = 'A Nifty HTML Parser written in Python',
   long_description= """Pyarser is a simple, straight forward HTML parser that allows you to easily harvest text
   inside an HTML document from a link to that website. Examples:\n
