@@ -4,8 +4,7 @@ setup(
   packages = ['Pyarser'], # this must be the same as the name above
   version = '0.1.1',
   description = 'A Nifty HTML Parser written in Python',
-  long_description= """Pyarser is a simple, straight forward HTML parser that allows you to easily harvest text
-  inside an HTML document from a link to that website. Examples:\n
+  long_description= """Pyarser is a simple, straight forward HTML parser that allows you to easily harvest text inside an HTML document from a link to that website. Examples:\n
   get_site_HTML(link): returns a string of HTML content from a link\n
   get_site_text(link): returns a string of text from a link. This string has all the HTML tags <> removed, along
   with there contents.\n
